@@ -27,7 +27,7 @@
 				<td><?= $brg->nama_brg; ?></td>
 				<td><?= $brg->keterangan; ?></td>
 				<td><?= $brg->kategori; ?></td>
-				<td>Rp. <?= $brg->harga; ?></td>
+				<td><?= "Rp. " . number_format($brg->harga, 0, ",", ".") ?></td>
 				<td><?= $brg->stok; ?></td>
 				<td>
 					<div class="btn btn-success btn-sm">
@@ -78,7 +78,7 @@
 					</div>
 					<div class="form-group">
 						<label>Harga</label>
-						<input type="number" name="harga" class="form-control" value="<?= set_value('harga'); ?>">
+						<input type="text" name="harga" class="form-control" id="rupiah" value="<?= set_value('harga'); ?>">
 						<?= form_error('harga', '<div class="form-text text-danger">', '</div>'); ?>
 					</div>
 					<div class="form-group">

@@ -36,7 +36,13 @@
 				<div class="card-body">
 					<h5 class="card-title mb-1"><?= $brg->nama_brg; ?></h5>
 					<small><?= $brg->keterangan ?></small><br />
-					<span class="badge badge-success mb-3">Rp. <?= $brg->harga; ?></span>
+					<span class="badge badge-success mb-3">
+						<?php if ($brg->harga == 0) : ?>
+							<?= "Gratis"; ?>
+						<?php else : ?>
+							<?= "Rp. " . number_format($brg->harga, 0, ",", ".") ?>
+						<?php endif; ?>
+					</span>
 					<a href="#" class="btn btn-sm btn-primary">Tambah ke Keranjang</a>
 					<a href="#" class="btn btn-sm btn-info">Detail</a>
 				</div>
