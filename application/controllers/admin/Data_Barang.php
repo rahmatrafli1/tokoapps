@@ -5,7 +5,45 @@ class Data_Barang extends CI_Controller
 {
 	public function index()
 	{
-		$data['barang'] = $this->Model_barang->tampil_data()->result();
+		// pagination 
+		$config['base_url'] = 'http://localhost/tokoapps/admin/data_barang/index';
+		$config['total_rows'] = $this->Model_barang->countAllBarang();
+		$config['per_page'] = 5;
+
+		// styling pagination
+		$config['full_tag_open'] = '<nav><ul class="pagination pagination-lg justify-content-center">';
+		$config['full_tag_close'] = '</ul></nav>';
+
+		$config['first_link'] = 'Awal';
+		$config['first_tag_open'] = '<li class="page-item">';
+		$config['first_tag_close'] = '</li>';
+
+		$config['last_link'] = 'Akhir';
+		$config['last_tag_open'] = '<li class="page-item">';
+		$config['last_tag_close'] = '</li>';
+
+		$config['next_link'] = '&raquo;';
+		$config['next_tag_open'] = '<li class="page-item">';
+		$config['next_tag_close'] = '</li>';
+
+		$config['prev_link'] = '&laquo;';
+		$config['prev_tag_open'] = '<li class="page-item">';
+		$config['prev_tag_close'] = '</li>';
+
+		$config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+		$config['cur_tag_close'] = '</a></li>';
+
+		$config['num_tag_open'] = '<li class="page-item">';
+		$config['num_tag_close'] = '</li>';
+
+		$config['attributes'] = array('class' => 'page-link');
+
+		// inisialisasi pagination
+		$this->pagination->initialize($config);
+
+
+		$data['start'] = $this->uri->segment(4);
+		$data['barang'] = $this->Model_barang->tampil_data_batas($config['per_page'], $data['start']);
 		$data['title'] = 'Data Barang';
 		$this->load->view('admin/data_barang', $data);
 	}
@@ -19,7 +57,45 @@ class Data_Barang extends CI_Controller
 		$this->form_validation->set_rules('stok', 'Stok', 'required', ['required' => 'Stok Wajib diisi!']);
 
 		if ($this->form_validation->run() == FALSE) {
-			$data['barang'] = $this->Model_barang->tampil_data()->result();
+			// pagination 
+			$config['base_url'] = 'http://localhost/tokoapps/admin/data_barang/index';
+			$config['total_rows'] = $this->Model_barang->countAllBarang();
+			$config['per_page'] = 5;
+
+			// styling pagination
+			$config['full_tag_open'] = '<nav><ul class="pagination pagination-lg justify-content-center">';
+			$config['full_tag_close'] = '</ul></nav>';
+
+			$config['first_link'] = 'Awal';
+			$config['first_tag_open'] = '<li class="page-item">';
+			$config['first_tag_close'] = '</li>';
+
+			$config['last_link'] = 'Akhir';
+			$config['last_tag_open'] = '<li class="page-item">';
+			$config['last_tag_close'] = '</li>';
+
+			$config['next_link'] = '&raquo;';
+			$config['next_tag_open'] = '<li class="page-item">';
+			$config['next_tag_close'] = '</li>';
+
+			$config['prev_link'] = '&laquo;';
+			$config['prev_tag_open'] = '<li class="page-item">';
+			$config['prev_tag_close'] = '</li>';
+
+			$config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+			$config['cur_tag_close'] = '</a></li>';
+
+			$config['num_tag_open'] = '<li class="page-item">';
+			$config['num_tag_close'] = '</li>';
+
+			$config['attributes'] = array('class' => 'page-link');
+
+			// inisialisasi pagination
+			$this->pagination->initialize($config);
+
+
+			$data['start'] = $this->uri->segment(4);
+			$data['barang'] = $this->Model_barang->tampil_data_batas($config['per_page'], $data['start']);
 			$data['title'] = 'Data Barang';
 			$this->load->view('admin/data_barang', $data);
 		} else {

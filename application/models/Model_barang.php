@@ -12,4 +12,14 @@ class Model_barang extends CI_Model
 	{
 		$this->db->insert($table, $data);
 	}
+
+	public function tampil_data_batas($limit, $start)
+	{
+		return $this->db->get('tb_barang', $limit, $start)->result();
+	}
+
+	public function countAllBarang()
+	{
+		return $this->db->get('tb_barang')->num_rows();
+	}
 }

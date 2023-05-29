@@ -19,11 +19,9 @@
 			<th>STOK</th>
 			<th colspan="3">AKSI</th>
 		</tr>
-		<?php
-		$no = 1;
-		foreach ($barang as $brg) : ?>
+		<?php foreach ($barang as $brg) : ?>
 			<tr>
-				<td><?= $no++; ?></td>
+				<td><?= ++$start; ?></td>
 				<td><?= $brg->nama_brg; ?></td>
 				<td><?= $brg->keterangan; ?></td>
 				<td><?= $brg->kategori; ?></td>
@@ -47,6 +45,7 @@
 			</tr>
 		<?php endforeach; ?>
 	</table>
+	<?= $this->pagination->create_links(); ?>
 </div>
 
 <!-- Modal -->
