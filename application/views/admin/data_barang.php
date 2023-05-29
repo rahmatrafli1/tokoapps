@@ -2,6 +2,11 @@
 <?php include_once('templates_admin/sidebar.php'); ?>
 
 <div class="container-fluid">
+	<div class="row">
+		<div class="col-lg">
+			<?= $this->session->flashdata('success'); ?>
+		</div>
+	</div>
 	<button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#tambahBarangModal"><i class="fas fa-plus fa-sm"></i> Tambah Data Barang</button>
 
 	<table class="table table-bordered">
@@ -55,11 +60,41 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				...
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<form action="<?= base_url() . 'admin/data_barang/tambah_aksi'; ?>" method="post" enctype="multipart/form-data">
+					<div class="form-group">
+						<label>Nama Barang</label>
+						<input type="text" name="nama_brg" class="form-control" value="<?= set_value('nama_brg'); ?>">
+						<?= form_error('nama_brg', '<div class="form-text text-danger">', '</div>'); ?>
+					</div>
+					<div class="form-group">
+						<label>Keterangan</label>
+						<input type="text" name="keterangan" class="form-control" value="<?= set_value('keterangan'); ?>">
+						<?= form_error('keterangan', '<div class="form-text text-danger">', '</div>'); ?>
+					</div>
+					<div class="form-group">
+						<label>Kategori</label>
+						<input type="text" name="kategori" class="form-control" value="<?= set_value('kategori'); ?>">
+						<?= form_error('kategori', '<div class="form-text text-danger">', '</div>'); ?>
+					</div>
+					<div class="form-group">
+						<label>Harga</label>
+						<input type="number" name="harga" class="form-control" value="<?= set_value('harga'); ?>">
+						<?= form_error('harga', '<div class="form-text text-danger">', '</div>'); ?>
+					</div>
+					<div class="form-group">
+						<label>Stok</label>
+						<input type="number" name="stok" class="form-control" value="<?= set_value('stok'); ?>">
+						<?= form_error('stok', '<div class="form-text text-danger">', '</div>'); ?>
+					</div>
+					<div class="form-group">
+						<label>Gambar</label>
+						<input type="file" name="gambar" class="form-control" accept=".jpg,.jpeg,.png,.gif">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+						<button type="submit" class="btn btn-primary">Simpan</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>

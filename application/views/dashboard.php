@@ -31,7 +31,7 @@
 	<!-- Card untuk menampilkan barang -->
 	<div class="row text-center mt-3">
 		<?php foreach ($barang as $brg) : ?>
-			<div class="card ml-3" style="width: 16rem;">
+			<div class="card ml-3 mb-3" style="width: 16rem;">
 				<img src="<?= base_url() . 'uploads/' . $brg->gambar; ?>" class="card-img-top" alt="<?= $brg->nama_brg; ?>">
 				<div class="card-body">
 					<h5 class="card-title mb-1"><?= $brg->nama_brg; ?></h5>
