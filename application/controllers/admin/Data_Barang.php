@@ -137,4 +137,73 @@ class Data_Barang extends CI_Controller
 			redirect('admin/data_barang');
 		}
 	}
+
+	public function edit($id)
+	{
+		$where = ['id_brg' => $id];
+		$data['barang'] = $this->Model_barang->edit_barang($where, 'tb_barang')->result();
+
+		$data['title'] = 'Edit Barang';
+		$this->load->view('admin/edit_barang', $data);
+	}
+
+	public function update()
+	{
+		$this->form_validation->set_rules('nama_brg', 'Nama Barang', 'required', ['required' => 'Nama Barang Wajib diisi!']);
+		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required', ['required' => 'Keterangan Wajib diisi!']);
+		$this->form_validation->set_rules('kategori', 'Kategori', 'required', ['required' => 'Kategori Wajib diisi!']);
+		$this->form_validation->set_rules('harga', 'Harga', 'required', ['required' => 'Harga Wajib diisi!']);
+		$this->form_validation->set_rules('stok', 'Stok', 'required', ['required' => 'Stok Wajib diisi!']);
+
+		if ($this->form_validation->run() == FALSE) {
+			$where = ['id_brg' => $id];
+			$data['barang'] = $this->Model_barang->edit_barang($where, 'tb_barang')->result();
+
+			$data['title'] = 'Edit Barang';
+			$this->load->view('admin/edit_barang', $data);
+		} else {
+			$id_brg		= $this->input->post('id_brg');
+			$nama_brg 	= $this->input->post('nama_brg');
+			$keterangan = $this->input->post('keterangan');
+			$kategori 	= $this->input->post('kategori');
+			$harga 		= $this->input->post('harga');
+			$stok 		= $this->input->post('stok');
+			$gambar 	= $_FILES['gambar']['name'];
+
+			$config['upload_path'] = './uploads';
+			$config['allowed_types'] = 'jpg|jpeg|png|gif';
+			$config['max_size']     = '2048';
+
+			$this->load->library('upload', $config);
+			if (!$this->upload->do_upload('gambar')) {
+				echo "gambar gagal di upload silahkan coba lagi.";
+			} else {
+				$cek_foto = $this->db->get_where('tb_barang', ['id_brg' => $id_brg])->row();
+				if ($cek_foto->gambar) {
+					unlink('uploads/' . $cek_foto->gambar);
+				}
+				$gambar = $this->upload->data('file_name');
+			}
+
+			$data = [
+				'nama_brg' 		=> $nama_brg,
+				'keterangan' 	=> $keterangan,
+				'kategori'		=> $kategori,
+				'harga'			=> $harga,
+				'stok'			=> $stok,
+				'gambar'		=> $gambar
+			];
+
+			$where = ['id_brg' => $id_brg];
+
+			$this->Model_barang->update_data($where, $data, 'tb_barang');
+			$this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Data berhasil diubah!</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>');
+			redirect('admin/data_barang');
+		}
+	}
 }

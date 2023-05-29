@@ -32,23 +32,15 @@
 						<i class="fas fa-eye"></i>
 					</div>
 				</td>
-				<td>
-					<div class="btn btn-info btn-sm">
-						<i class="fas fa-pencil-alt"></i>
-					</div>
-				</td>
-				<td>
-					<div class="btn btn-danger btn-sm">
-						<i class="fas fa-trash"></i>
-					</div>
-				</td>
+				<td><?= anchor('admin/data_barang/edit/' . $brg->id_brg, '<div class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i></div>'); ?></td>
+				<td><?= anchor('admin/data_barang/hapus/' . $brg->id_brg, '<div class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></div>') ?></td>
 			</tr>
 		<?php endforeach; ?>
 	</table>
 	<?= $this->pagination->create_links(); ?>
 </div>
 
-<!-- Modal -->
+<!-- Modal Tambah -->
 <div class="modal fade" id="tambahBarangModal" tabindex="-1" aria-labelledby="tambahBarangModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -77,7 +69,7 @@
 					</div>
 					<div class="form-group">
 						<label>Harga</label>
-						<input type="text" name="harga" class="form-control" id="rupiah" value="<?= set_value('harga'); ?>">
+						<input type="text" name="harga" class="form-control" value="<?= set_value('harga'); ?>">
 						<?= form_error('harga', '<div class="form-text text-danger">', '</div>'); ?>
 					</div>
 					<div class="form-group">
@@ -98,5 +90,6 @@
 		</div>
 	</div>
 </div>
+<!-- Akhir Modal Tambah -->
 
 <?php include_once('templates_admin/footer.php'); ?>

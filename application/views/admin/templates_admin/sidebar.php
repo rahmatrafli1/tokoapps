@@ -25,7 +25,7 @@
 			</li>
 
 			<!-- Nav Item - Tables -->
-			<li class="nav-item <?php if ($title == 'Data Barang') : ?>active<?php endif; ?>">
+			<li class="nav-item <?php if ($title == 'Data Barang' || $title == 'Edit Barang') : ?>active<?php endif; ?>">
 				<a class="nav-link" href="<?= base_url(); ?>admin/data_barang">
 					<i class="fas fa-fw fa-database"></i>
 					<span>Data Barang</span></a>

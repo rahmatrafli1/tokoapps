@@ -22,4 +22,15 @@ class Model_barang extends CI_Model
 	{
 		return $this->db->get('tb_barang')->num_rows();
 	}
+
+	public function edit_barang($where, $table)
+	{
+		return $this->db->get_where($table, $where);
+	}
+
+	public function update_data($where, $data, $table)
+	{
+		$this->db->where($where);
+		$this->db->update($table, $data);
+	}
 }
