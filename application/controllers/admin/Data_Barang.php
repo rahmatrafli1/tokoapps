@@ -112,7 +112,7 @@ class Data_Barang extends CI_Controller
 
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('gambar')) {
-				echo "gambar gagal di upload silahkan coba lagi.";
+				$this->upload->display_errors();
 			} else {
 				$gambar = $this->upload->data('file_name');
 			}
@@ -176,7 +176,7 @@ class Data_Barang extends CI_Controller
 
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('gambar')) {
-				echo "gambar gagal di upload silahkan coba lagi.";
+				$this->upload->display_errors();
 			} else {
 				$cek_foto = $this->db->get_where('tb_barang', ['id_brg' => $id_brg])->row();
 				if ($cek_foto->gambar) {
