@@ -206,4 +206,21 @@ class Data_Barang extends CI_Controller
 			redirect('admin/data_barang');
 		}
 	}
+
+	public function hapus($id)
+	{
+		$cek_foto = $this->db->get_where('tb_barang', ['id_brg' => $id])->row();
+		if ($cek_foto->gambar) {
+			unlink('uploads/' . $cek_foto->gambar);
+		}
+		$where = ['id_brg' => $id];
+		$this->Model_barang->hapus_data($where, 'tb_barang');
+		$this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Data berhasil dihapus!</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>');
+		redirect('admin/data_barang');
+	}
 }

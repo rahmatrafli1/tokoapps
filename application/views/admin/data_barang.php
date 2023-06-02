@@ -33,7 +33,7 @@
 					</div>
 				</td>
 				<td><?= anchor('admin/data_barang/edit/' . $brg->id_brg, '<div class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i></div>'); ?></td>
-				<td><?= anchor('admin/data_barang/hapus/' . $brg->id_brg, '<div class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></div>') ?></td>
+				<td><?= anchor('admin/data_barang/hapus/' . $brg->id_brg, '<div class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></div>', 'onclick="return confirm(\'Are you sure to delete data?\')"') ?></td>
 			</tr>
 		<?php endforeach; ?>
 	</table>
