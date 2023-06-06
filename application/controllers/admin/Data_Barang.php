@@ -149,67 +149,53 @@ class Data_Barang extends CI_Controller
 
 	public function update()
 	{
-		$this->form_validation->set_rules('nama_brg', 'Nama Barang', 'required', ['required' => 'Nama Barang Wajib diisi!']);
-		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required', ['required' => 'Keterangan Wajib diisi!']);
-		$this->form_validation->set_rules('kategori', 'Kategori', 'required', ['required' => 'Kategori Wajib diisi!']);
-		$this->form_validation->set_rules('harga', 'Harga', 'required|numeric', ['required' => 'Harga Wajib diisi!', 'numeric' => 'Harga Wajib diisi angka!']);
-		$this->form_validation->set_rules('stok', 'Stok', 'required', ['required' => 'Stok Wajib diisi!']);
+		$id_brg		= $this->input->post('id_brg');
+		$nama_brg 	= $this->input->post('nama_brg');
+		$keterangan = $this->input->post('keterangan');
+		$kategori 	= $this->input->post('kategori');
+		$harga 		= $this->input->post('harga');
+		$stok 		= $this->input->post('stok');
+		$gambar 	= $_FILES['gambar']['name'];
 
-		if ($this->form_validation->run() == FALSE) {
-			$where = ['id_brg' => $id];
-			$data['barang'] = $this->Model_barang->edit_barang($where, 'tb_barang')->result();
+		if ($gambar == null) {
+			$cek_foto = $this->db->get_where('tb_barang', ['id_brg' => $id_brg])->row();
+			$gambar = $cek_foto->gambar;
+		} else if ($gambar != null) {
+			$config['upload_path'] = './uploads';
+			$config['allowed_types'] = 'jpg|jpeg|png|gif';
+			$config['max_size']     = '2048';
 
-			$data['title'] = 'Edit Barang';
-			$this->load->view('admin/edit_barang', $data);
-		} else {
-			$id_brg		= $this->input->post('id_brg');
-			$nama_brg 	= $this->input->post('nama_brg');
-			$keterangan = $this->input->post('keterangan');
-			$kategori 	= $this->input->post('kategori');
-			$harga 		= $this->input->post('harga');
-			$stok 		= $this->input->post('stok');
-			$gambar 	= $_FILES['gambar']['name'];
-
-			if ($gambar == null) {
+			$this->load->library('upload', $config);
+			if (!$this->upload->do_upload('gambar')) {
+				echo $this->upload->display_errors();
+			} else {
 				$cek_foto = $this->db->get_where('tb_barang', ['id_brg' => $id_brg])->row();
-				$gambar = $cek_foto->gambar;
-			} else if ($gambar != null) {
-				$config['upload_path'] = './uploads';
-				$config['allowed_types'] = 'jpg|jpeg|png|gif';
-				$config['max_size']     = '2048';
-
-				$this->load->library('upload', $config);
-				if (!$this->upload->do_upload('gambar')) {
-					echo $this->upload->display_errors();
-				} else {
-					$cek_foto = $this->db->get_where('tb_barang', ['id_brg' => $id_brg])->row();
-					if ($cek_foto->gambar) {
-						unlink('uploads/' . $cek_foto->gambar);
-					}
-					$gambar = $this->upload->data('file_name');
+				if ($cek_foto->gambar) {
+					unlink('uploads/' . $cek_foto->gambar);
 				}
+				$gambar = $this->upload->data('file_name');
 			}
+		}
 
-			$data = [
-				'nama_brg' 		=> $nama_brg,
-				'keterangan' 	=> $keterangan,
-				'kategori'		=> $kategori,
-				'harga'			=> $harga,
-				'stok'			=> $stok,
-				'gambar'		=> $gambar
-			];
+		$data = [
+			'nama_brg' 		=> $nama_brg,
+			'keterangan' 	=> $keterangan,
+			'kategori'		=> $kategori,
+			'harga'			=> $harga,
+			'stok'			=> $stok,
+			'gambar'		=> $gambar
+		];
 
-			$where = ['id_brg' => $id_brg];
+		$where = ['id_brg' => $id_brg];
 
-			$this->Model_barang->update_data($where, $data, 'tb_barang');
-			$this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+		$this->Model_barang->update_data($where, $data, 'tb_barang');
+		$this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
 		<strong>Data berhasil diubah!</strong>
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		  <span aria-hidden="true">&times;</span>
 		</button>
 	  </div>');
-			redirect('admin/data_barang');
-		}
+		redirect('admin/data_barang');
 	}
 
 	public function hapus($id)
