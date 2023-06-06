@@ -53,7 +53,7 @@ class Data_Barang extends CI_Controller
 		$this->form_validation->set_rules('nama_brg', 'Nama Barang', 'required', ['required' => 'Nama Barang Wajib diisi!']);
 		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required', ['required' => 'Keterangan Wajib diisi!']);
 		$this->form_validation->set_rules('kategori', 'Kategori', 'required', ['required' => 'Kategori Wajib diisi!']);
-		$this->form_validation->set_rules('harga', 'Harga', 'required', ['required' => 'Harga Wajib diisi!']);
+		$this->form_validation->set_rules('harga', 'Harga', 'required|numeric', ['required' => 'Harga Wajib diisi!', 'numeric' => 'Harga Wajib diisi angka!']);
 		$this->form_validation->set_rules('stok', 'Stok', 'required', ['required' => 'Stok Wajib diisi!']);
 
 		if ($this->form_validation->run() == FALSE) {
@@ -112,7 +112,7 @@ class Data_Barang extends CI_Controller
 
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('gambar')) {
-				$this->upload->display_errors();
+				echo $this->upload->display_errors();
 			} else {
 				$gambar = $this->upload->data('file_name');
 			}
@@ -152,7 +152,7 @@ class Data_Barang extends CI_Controller
 		$this->form_validation->set_rules('nama_brg', 'Nama Barang', 'required', ['required' => 'Nama Barang Wajib diisi!']);
 		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required', ['required' => 'Keterangan Wajib diisi!']);
 		$this->form_validation->set_rules('kategori', 'Kategori', 'required', ['required' => 'Kategori Wajib diisi!']);
-		$this->form_validation->set_rules('harga', 'Harga', 'required', ['required' => 'Harga Wajib diisi!']);
+		$this->form_validation->set_rules('harga', 'Harga', 'required|numeric', ['required' => 'Harga Wajib diisi!', 'numeric' => 'Harga Wajib diisi angka!']);
 		$this->form_validation->set_rules('stok', 'Stok', 'required', ['required' => 'Stok Wajib diisi!']);
 
 		if ($this->form_validation->run() == FALSE) {
@@ -170,19 +170,24 @@ class Data_Barang extends CI_Controller
 			$stok 		= $this->input->post('stok');
 			$gambar 	= $_FILES['gambar']['name'];
 
-			$config['upload_path'] = './uploads';
-			$config['allowed_types'] = 'jpg|jpeg|png|gif';
-			$config['max_size']     = '2048';
-
-			$this->load->library('upload', $config);
-			if (!$this->upload->do_upload('gambar')) {
-				$this->upload->display_errors();
-			} else {
+			if ($gambar == null) {
 				$cek_foto = $this->db->get_where('tb_barang', ['id_brg' => $id_brg])->row();
-				if ($cek_foto->gambar) {
-					unlink('uploads/' . $cek_foto->gambar);
+				$gambar = $cek_foto->gambar;
+			} else if ($gambar != null) {
+				$config['upload_path'] = './uploads';
+				$config['allowed_types'] = 'jpg|jpeg|png|gif';
+				$config['max_size']     = '2048';
+
+				$this->load->library('upload', $config);
+				if (!$this->upload->do_upload('gambar')) {
+					echo $this->upload->display_errors();
+				} else {
+					$cek_foto = $this->db->get_where('tb_barang', ['id_brg' => $id_brg])->row();
+					if ($cek_foto->gambar) {
+						unlink('uploads/' . $cek_foto->gambar);
+					}
+					$gambar = $this->upload->data('file_name');
 				}
-				$gambar = $this->upload->data('file_name');
 			}
 
 			$data = [
@@ -198,11 +203,11 @@ class Data_Barang extends CI_Controller
 
 			$this->Model_barang->update_data($where, $data, 'tb_barang');
 			$this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Data berhasil diubah!</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>');
+		<strong>Data berhasil diubah!</strong>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		  <span aria-hidden="true">&times;</span>
+		</button>
+	  </div>');
 			redirect('admin/data_barang');
 		}
 	}

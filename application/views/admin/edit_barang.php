@@ -35,7 +35,7 @@
 			<div class="form-group">
 				<label>Gambar</label>
 				<input type="file" name="gambar" class="form-control mb-2" accept=".jpg,.jpeg,.png,.gif" value="<?= $brg->gambar; ?>">
-				<img src="<?= base_url('uploads/' . $brg->gambar); ?>" alt="<?= $brg->nama_brg; ?>">
+				<img src="<?= base_url('uploads/' . $brg->gambar); ?>" alt="<?= $brg->nama_brg; ?>" width="300" height="300">
 			</div>
 			<button type="submit" class="btn btn-primary mb-3">Simpan</button>
 		<?php endforeach; ?>
