@@ -214,4 +214,12 @@ class Data_Barang extends CI_Controller
           </div>');
 		redirect('admin/data_barang');
 	}
+
+	public function detail($id)
+	{
+		$detail = $this->Model_barang->get_detail($id);
+		$data['title'] = 'Detail Data Barang';
+		$data['detail'] = $detail;
+		$this->load->view('admin/detail_barang', $data);
+	}
 }

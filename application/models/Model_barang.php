@@ -39,4 +39,10 @@ class Model_barang extends CI_Model
 		$this->db->where($where);
 		$this->db->delete($table);
 	}
+
+	public function get_detail($id = null)
+	{
+		$query = $this->db->get_where('tb_barang', ['id_brg' => $id])->row();
+		return $query;
+	}
 }
