@@ -9,4 +9,9 @@ class Dashboard extends CI_Controller
 		$data['title'] = "Dashboard";
 		$this->load->view('dashboard', $data);
 	}
+
+	public function tambah_keranjang()
+	{
+		echo "comming soon!";
+	}
 }

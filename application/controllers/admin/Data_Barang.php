@@ -128,12 +128,7 @@ class Data_Barang extends CI_Controller
 			];
 
 			$this->Model_barang->tambah_barang($data, 'tb_barang');
-			$this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Data berhasil ditambahkan!</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>');
+			$this->session->set_flashdata('success', 'ditambah!');
 			redirect('admin/data_barang');
 		}
 	}
@@ -189,12 +184,7 @@ class Data_Barang extends CI_Controller
 		$where = ['id_brg' => $id_brg];
 
 		$this->Model_barang->update_data($where, $data, 'tb_barang');
-		$this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-		<strong>Data berhasil diubah!</strong>
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		  <span aria-hidden="true">&times;</span>
-		</button>
-	  </div>');
+		$this->session->set_flashdata('success', 'diubah!');
 		redirect('admin/data_barang');
 	}
 
@@ -206,12 +196,7 @@ class Data_Barang extends CI_Controller
 		}
 		$where = ['id_brg' => $id];
 		$this->Model_barang->hapus_data($where, 'tb_barang');
-		$this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Data berhasil dihapus!</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>');
+		$this->session->set_flashdata('success', 'dihapus!');
 		redirect('admin/data_barang');
 	}
 

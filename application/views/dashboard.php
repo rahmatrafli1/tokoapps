@@ -43,8 +43,10 @@
 							<?= "Rp. " . number_format($brg->harga, 0, ",", ".") ?>
 						<?php endif; ?>
 					</span>
-					<a href="#" class="btn btn-sm btn-primary">Tambah ke Keranjang</a>
-					<a href="#" class="btn btn-sm btn-info">Detail</a>
+					<div>
+						<a href="<?= base_url('dashboard/tambah_keranjang/' . $brg->id_brg); ?>" class="btn btn-sm btn-primary">Tambah ke Keranjang</a>
+						<a href="#" class="btn btn-sm btn-info">Detail</a>
+					</div>
 				</div>
 			</div>
 		<?php endforeach; ?>

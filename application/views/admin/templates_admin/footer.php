@@ -48,6 +48,11 @@
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/js/sb-admin-2.min.js') ?>"></script>
 
+<!-- Sweetalert2 -->
+<script src="<?= base_url('assets/sweetalert2/sweetalert2.all.min.js'); ?>"></script>
+
+<!-- Custom Javascript -->
+<script src="<?= base_url('assets/js/custom/flashdata.js'); ?>"></script>
 </body>
 
 </html>

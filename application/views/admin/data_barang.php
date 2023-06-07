@@ -2,11 +2,7 @@
 <?php include_once('templates_admin/sidebar.php'); ?>
 
 <div class="container-fluid">
-	<div class="row">
-		<div class="col-lg">
-			<?= $this->session->flashdata('success'); ?>
-		</div>
-	</div>
+	<div class="flash-data" data-flashdata="<?= $this->session->flashdata('success'); ?>"></div>
 	<button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#tambahBarangModal"><i class="fas fa-plus fa-sm"></i> Tambah Data Barang</button>
 
 	<table class="table table-bordered">
@@ -34,7 +30,7 @@
 					<?= anchor('admin/data_barang/edit/' . $brg->id_brg, '<div class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i></div>'); ?>
 				</td>
 				<td>
-					<?= anchor('admin/data_barang/hapus/' . $brg->id_brg, '<div class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></div>', 'onclick="return confirm(\'Are you sure to delete data?\')"') ?>
+					<a href="<?= base_url('admin/data_barang/hapus/' . $brg->id_brg) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fas fa-trash"></i></a>
 				</td>
 			</tr>
 		<?php endforeach; ?>
