@@ -32,6 +32,12 @@
 	<div class="row text-center mt-3">
 		<?php foreach ($barang as $brg) : ?>
 			<div class="card ml-3 mb-3" style="width: 16rem;">
+				<?= form_open('dashboard/tambah_keranjang'); ?>
+				<?= form_hidden('id', $brg->id_brg); ?>
+				<?= form_hidden('qty', 1); ?>
+				<?= form_hidden('price', $brg->harga); ?>
+				<?= form_hidden('name', $brg->nama_brg); ?>
+				<?= form_hidden('redirect_page', str_replace('index.php/', '', current_url())); ?>
 				<img src="<?= base_url() . 'uploads/' . $brg->gambar; ?>" class="card-img-top" alt="<?= $brg->nama_brg; ?>">
 				<div class="card-body">
 					<h5 class="card-title mb-1"><?= $brg->nama_brg; ?></h5>
@@ -44,10 +50,11 @@
 						<?php endif; ?>
 					</span>
 					<div>
-						<a href="<?= base_url('dashboard/tambah_keranjang/' . $brg->id_brg); ?>" class="btn btn-sm btn-primary">Tambah ke Keranjang</a>
+						<button class="btn btn-sm btn-primary swalDefaultSuccess">Tambah ke Keranjang</button>
 						<a href="#" class="btn btn-sm btn-info">Detail</a>
 					</div>
 				</div>
+				<?= form_close(); ?>
 			</div>
 		<?php endforeach; ?>
 	</div>

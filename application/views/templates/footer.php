@@ -48,6 +48,12 @@
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/js/sb-admin-2.min.js') ?>"></script>
 
+<!-- Sweetalert2 -->
+<script src="<?= base_url('assets/sweetalert2/sweetalert2.all.min.js'); ?>"></script>
+
+<!-- custom toast add to cart -->
+<script src="<?= base_url('assets/js/custom/toast-add-cart.js'); ?>"></script>
+
 </body>
 
 </html>
