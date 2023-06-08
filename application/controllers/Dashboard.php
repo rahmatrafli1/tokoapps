@@ -23,4 +23,10 @@ class Dashboard extends CI_Controller
 		$this->cart->insert($data);
 		redirect($redirect_page);
 	}
+
+	public function lihat_keranjang()
+	{
+		$data['title'] = 'Lihat Keranjang';
+		$this->load->view('lihat_keranjang', $data);
+	}
 }

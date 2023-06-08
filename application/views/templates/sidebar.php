@@ -18,7 +18,7 @@
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item <?php if ($title == 'Dashboard') : ?>active<?php endif; ?>">
+			<li class="nav-item <?php if ($title == 'Dashboard' || $title == "Lihat Keranjang") : ?>active<?php endif; ?>">
 				<a class="nav-link" href="<?= base_url(); ?>">
 					<i class="fas fa-fw fa-tachometer-alt"></i>
 					<span>Dashboard</span></a>
@@ -138,31 +138,9 @@
 							<!-- Dropdown - Cart -->
 							<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
 								<h6 class="dropdown-header">
-									Tambah ke Keranjang
+									Keranjang Belanja
 								</h6>
-								<?php
-								foreach ($keranjang as $value) {
-								?>
-									<a class="dropdown-item d-flex align-items-center" href="#">
-										<div class="dropdown-list-image mr-3">
-											<img class="rounded-circle" src="" alt="...">
-										</div>
-										<div>
-											<div class="text-truncate"><?= $value['name']; ?></div>
-											<div class="small text-gray-500"><?= $value['qty']; ?> x <?= "Rp. " . number_format($value['price'], 0, ",", ".") ?></div>
-											<div class="small text-gray-500"><i class="fas fa-calculator"></i> <?= "Rp. " . number_format($value['subtotal'], 0, ",", ".") ?></div>
-										</div>
-									</a>
-								<?php } ?>
-								<a class="dropdown-item text-center small text-gray-500" href="#">
-									<tr>
-										<td colspan="2"> </td>
-										<td class="right"><strong>Total</strong></td>
-										<td class="right"><?= "Rp. " . $this->cart->format_number($this->cart->total()); ?></td>
-									</tr>
-								</a>
-								<a class="dropdown-item text-center small text-gray-500" href="#">Lihat Keranjang</a>
-								<a class="dropdown-item text-center small text-gray-500" href="#">Check out</a>
+								<a class="dropdown-item text-center small text-gray-500" href="<?= base_url('dashboard/lihat_keranjang'); ?>"><i class="fas fa-eye"></i> Lihat Keranjang</a>
 							</div>
 						</li>
 

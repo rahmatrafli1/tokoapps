@@ -50,7 +50,7 @@
 						<?php endif; ?>
 					</span>
 					<div>
-						<button class="btn btn-sm btn-primary swalDefaultSuccess">Tambah ke Keranjang</button>
+						<button type="submit" class="btn btn-sm btn-primary swalDefaultSuccess">Tambah ke Keranjang</button>
 						<a href="#" class="btn btn-sm btn-info">Detail</a>
 					</div>
 				</div>
