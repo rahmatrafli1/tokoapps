@@ -54,6 +54,9 @@
 <!-- custom toast add to cart -->
 <script src="<?= base_url('assets/js/custom/toast-add-cart.js'); ?>"></script>
 
+<!-- custom toast delete cart -->
+<script src="<?= base_url('assets/js/custom/toast-delete-cart.js'); ?>"></script>
+
 </body>
 
 </html>

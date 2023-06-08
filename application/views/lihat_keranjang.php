@@ -31,6 +31,14 @@
 			<td class="text-right"><?= "Rp. " . number_format($this->cart->total(), 0, ",", "."); ?></td>
 		</tr>
 	</table>
+
+	<div class="mb-3 text-right">
+		<?php if (!empty($keranjang)) : ?>
+			<a href="<?= base_url('dashboard/hapus_keranjang') ?>" class="btn btn-sm btn-danger swalSuccessDelete"><i class="fas fa-times"></i> Hapus Keranjang</a>
+			<a href="<?= base_url('/') ?>" class="btn btn-sm btn-primary"><i class="fas fa-shopping-cart"></i> Lanjutkan Belanja</a>
+			<a href="<?= base_url('dashboard/pembayaran') ?>" class="btn btn-sm btn-success"><i class="fas fa-money-bill-wave"></i> Pembayaran</a>
+		<?php endif; ?>
+	</div>
 </div>
 
 <?php include_once('templates/footer.php'); ?>
