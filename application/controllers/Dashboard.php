@@ -54,9 +54,14 @@ class Dashboard extends CI_Controller
 			$data['title'] = 'Pembayaran';
 			return $this->load->view('pembayaran', $data);
 		} else {
-			$this->cart->destroy();
-			$data['title'] = 'Pesanan';
-			return $this->load->view('pesanan', $data);
+			$is_process = $this->Model_invoice->index();
+			if ($is_process) {
+				$this->cart->destroy();
+				$data['title'] = 'Pesanan';
+				return $this->load->view('pesanan', $data);
+			} else {
+				echo "Pesanan anda gagal diproses";
+			}
 		}
 	}
 }
