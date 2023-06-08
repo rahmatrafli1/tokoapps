@@ -64,4 +64,11 @@ class Dashboard extends CI_Controller
 			}
 		}
 	}
+
+	public function detail($id_brg)
+	{
+		$data['barang'] = $this->Model_barang->get_detail($id_brg);
+		$data['title'] = 'Detail Barang';
+		return $this->load->view('detail_barang', $data);
+	}
 }

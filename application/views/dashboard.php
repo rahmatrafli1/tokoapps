@@ -38,7 +38,7 @@
 				<?= form_hidden('price', $brg->harga); ?>
 				<?= form_hidden('name', $brg->nama_brg); ?>
 				<?= form_hidden('redirect_page', str_replace('index.php/', '', current_url())); ?>
-				<img src="<?= base_url() . 'uploads/' . $brg->gambar; ?>" class="card-img-top" alt="<?= $brg->nama_brg; ?>">
+				<img src="<?= base_url() . 'uploads/' . $brg->gambar; ?>" class="card-img-top" alt="<?= $brg->nama_brg; ?>" width="300">
 				<div class="card-body">
 					<h5 class="card-title mb-1"><?= $brg->nama_brg; ?></h5>
 					<small><?= $brg->keterangan ?></small><br />
@@ -50,8 +50,8 @@
 						<?php endif; ?>
 					</span>
 					<div>
-						<button type="submit" class="btn btn-sm btn-primary swalDefaultSuccess">Tambah ke Keranjang</button>
-						<a href="#" class="btn btn-sm btn-info">Detail</a>
+						<button type="submit" class="btn btn-sm btn-primary swalDefaultSuccess"><i class="fas fa-cart-plus"></i> Tambah</button>
+						<a href="<?= base_url('dashboard/detail/' . $brg->id_brg); ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i> Detail</a>
 					</div>
 				</div>
 				<?= form_close(); ?>

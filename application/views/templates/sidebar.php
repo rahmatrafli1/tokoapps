@@ -18,7 +18,7 @@
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item <?php if ($title == 'Dashboard' || $title == "Lihat Keranjang" || $title == "Pembayaran" || $title == "Pesanan") : ?>active<?php endif; ?>">
+			<li class="nav-item <?php if ($title == 'Dashboard' || $title == "Lihat Keranjang" || $title == "Pembayaran" || $title == "Pesanan" || $title == "Detail Barang") : ?>active<?php endif; ?>">
 				<a class="nav-link" href="<?= base_url(); ?>">
 					<i class="fas fa-fw fa-tachometer-alt"></i>
 					<span>Dashboard</span></a>
