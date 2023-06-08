@@ -19,7 +19,7 @@
 				<td><?= $inv->tgl_pesan; ?></td>
 				<td><?= $inv->batas_bayar; ?></td>
 				<td>
-					<div class="btn btn-sm btn-success">Detail</div>
+					<?= anchor('admin/invoice/detail/' . $inv->id, '<div class="btn btn-sm btn-success"><i class="fas fa-eye"></i></div>'); ?>
 				</td>
 			</tr>
 		<?php endforeach; ?>

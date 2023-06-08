@@ -31,7 +31,7 @@
 					<span>Data Barang</span></a>
 			</li>
 
-			<li class="nav-item <?php if ($title == 'Invoice') : ?>active<?php endif; ?>">
+			<li class="nav-item <?php if ($title == 'Invoice' || $title == 'Detail Invoice') : ?>active<?php endif; ?>">
 				<a class="nav-link" href="<?= base_url(); ?>admin/invoice">
 					<i class="fas fa-fw fa-file-invoice"></i>
 					<span>Invoices</span></a>
