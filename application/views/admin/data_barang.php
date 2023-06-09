@@ -49,7 +49,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form action="<?= base_url() . 'admin/data_barang/tambah_aksi'; ?>" method="post" enctype="multipart/form-data">
+				<form action="<?= current_url(); ?>" method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<label>Nama Barang</label>
 						<input type="text" name="nama_brg" class="form-control" value="<?= set_value('nama_brg'); ?>">
@@ -62,7 +62,14 @@
 					</div>
 					<div class="form-group">
 						<label>Kategori</label>
-						<input type="text" name="kategori" class="form-control" value="<?= set_value('kategori'); ?>">
+						<select class="form-control" name="kategori">
+							<option value="">--Pilih Kategori--</option>
+							<option value="Elektronik">Elektronik</option>
+							<option value="Pakaian Pria">Pakaian Pria</option>
+							<option value="Pakaian Wanita">Pakaian Wanita</option>
+							<option value="Pakaian Anak-anak">Pakaian Anak-anak</option>
+							<option value="Peralatan Olahraga">Peralatan Olahraga</option>
+						</select>
 						<?= form_error('kategori', '<div class="form-text text-danger">', '</div>'); ?>
 					</div>
 					<div class="form-group">
@@ -78,6 +85,7 @@
 					<div class="form-group">
 						<label>Gambar</label>
 						<input type="file" name="gambar" class="form-control" accept=".jpg,.jpeg,.png,.gif">
+						<?= form_error('gambar', '<div class="form-text text-danger">', '</div>') ?>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

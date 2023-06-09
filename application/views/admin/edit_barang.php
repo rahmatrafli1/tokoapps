@@ -5,7 +5,7 @@
 	<h3><i class="fas fa-pencil-alt"></i> EDIT DATA BARANG</h3>
 
 	<?php foreach ($barang as $brg) : ?>
-		<form action="<?= base_url() . 'admin/data_barang/update'; ?>" method="post" enctype="multipart/form-data">
+		<form action="<?= current_url(); ?>" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="id_brg" class="form-control" value="<?= $brg->id_brg; ?>">
 			<div class="form-group">
 				<label>Nama Barang</label>
@@ -19,7 +19,14 @@
 			</div>
 			<div class="form-group">
 				<label>Kategori</label>
-				<input type="text" name="kategori" class="form-control" value="<?= $brg->kategori; ?>">
+				<select class="form-control" name="kategori">
+					<option value="">--Pilih Kategori--</option>
+					<option>Elektronik</option>
+					<option>Pakaian Pria</option>
+					<option>Pakaian Wanita</option>
+					<option>Pakaian Anak-anak</option>
+					<option>Peralatan Olahraga</option>
+				</select>
 				<?= form_error('kategori', '<div class="form-text text-danger">', '</div>'); ?>
 			</div>
 			<div class="form-group">
@@ -34,7 +41,8 @@
 			</div>
 			<div class="form-group">
 				<label>Gambar</label>
-				<input type="file" name="gambar" class="form-control mb-2" accept=".jpg,.jpeg,.png,.gif" value="<?= $brg->gambar; ?>">
+				<input type="file" name="gambar" class="form-control mb-2" accept=".jpg,.jpeg,.png,.gif">
+				<?= form_error('gambar', '<div class="form-text text-danger">', '</div>') ?>
 				<img src="<?= base_url('uploads/' . $brg->gambar); ?>" alt="<?= $brg->nama_brg; ?>" width="300" height="300">
 			</div>
 			<button type="submit" class="btn btn-primary mb-3">Simpan</button>

@@ -33,32 +33,32 @@
 			</div>
 
 			<!-- Nav Item - Tables -->
-			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url(); ?>">
+			<li class="nav-item <?php if ($title == 'Kategori Elektronik') : ?>active<?php endif; ?>">
+				<a class="nav-link" href="<?= base_url('kategori/elektronik'); ?>">
 					<i class="fas fa-fw fa-bolt"></i>
 					<span>Elektronik</span></a>
 			</li>
 
-			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url(); ?>">
+			<li class="nav-item <?php if ($title == 'Kategori Pakaian Pria') : ?>active<?php endif; ?>">
+				<a class="nav-link" href="<?= base_url('kategori/pakaian_pria'); ?>">
 					<i class="fas fa-fw fa-male"></i>
 					<span>Pakaian Pria</span></a>
 			</li>
 
-			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url(); ?>">
+			<li class="nav-item <?php if ($title == 'Kategori Pakaian Wanita') : ?>active<?php endif; ?>">
+				<a class="nav-link" href="<?= base_url('kategori/pakaian_wanita'); ?>">
 					<i class="fas fa-fw fa-female"></i>
 					<span>Pakaian Wanita</span></a>
 			</li>
 
-			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url(); ?>">
+			<li class="nav-item <?php if ($title == 'Kategori Pakaian Anak-anak') : ?>active<?php endif; ?>">
+				<a class="nav-link" href="<?= base_url('kategori/pakaian_anak'); ?>">
 					<i class="fas fa-fw fa-child"></i>
 					<span>Pakaian Anak-anak</span></a>
 			</li>
 
-			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url(); ?>">
+			<li class="nav-item <?php if ($title == 'Kategori Peralatan Olahraga') : ?>active<?php endif; ?>">
+				<a class="nav-link" href="<?= base_url('kategori/peralatan_olahraga'); ?>">
 					<i class="fas fa-fw fa-basketball-ball"></i>
 					<span>Peralatan Olahraga</span></a>
 			</li>
