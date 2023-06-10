@@ -3,7 +3,6 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
 	<!-- Carousel -->
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators">

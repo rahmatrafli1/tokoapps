@@ -64,11 +64,11 @@
 						<label>Kategori</label>
 						<select class="form-control" name="kategori">
 							<option value="">--Pilih Kategori--</option>
-							<option value="Elektronik">Elektronik</option>
-							<option value="Pakaian Pria">Pakaian Pria</option>
-							<option value="Pakaian Wanita">Pakaian Wanita</option>
-							<option value="Pakaian Anak-anak">Pakaian Anak-anak</option>
-							<option value="Peralatan Olahraga">Peralatan Olahraga</option>
+							<option value="Elektronik" <?= set_value("kategori") == "Elektronik" ? "selected" : "" ?>>Elektronik</option>
+							<option value="Pakaian Pria" <?= set_value("kategori") == "Pakaian Pria" ? "selected" : "" ?>>Pakaian Pria</option>
+							<option value="Pakaian Wanita" <?= set_value("kategori") == "Pakaian Wanita" ? "selected" : "" ?>>Pakaian Wanita</option>
+							<option value="Pakaian Anak-anak" <?= set_value("kategori") == "Pakaian Anak-anak" ? "selected" : "" ?>>Pakaian Anak-anak</option>
+							<option value="Peralatan Olahraga" <?= set_value("kategori") == "Peralatan Olahraga" ? "selected" : "" ?>>Peralatan Olahraga</option>
 						</select>
 						<?= form_error('kategori', '<div class="form-text text-danger">', '</div>'); ?>
 					</div>

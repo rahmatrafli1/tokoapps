@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Data_Barang extends CI_Controller
 {
-	public function index()
+	private function validasi_add()
 	{
 		$this->form_validation->set_rules('nama_brg', 'Nama Barang', 'required', ['required' => 'Nama Barang Wajib diisi!']);
 		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required', ['required' => 'Keterangan Wajib diisi!']);
@@ -11,49 +11,69 @@ class Data_Barang extends CI_Controller
 		$this->form_validation->set_rules('harga', 'Harga', 'required|numeric', ['required' => 'Harga Wajib diisi!', 'numeric' => 'Harga Wajib diisi angka!']);
 		$this->form_validation->set_rules('stok', 'Stok', 'required', ['required' => 'Stok Wajib diisi!']);
 		$this->form_validation->set_rules('gambar', '', 'callback_file_check');
+	}
+
+	private function validasi_edit()
+	{
+		$this->form_validation->set_rules('nama_brg', 'Nama Barang', 'required', ['required' => 'Nama Barang Wajib diisi!']);
+		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required', ['required' => 'Keterangan Wajib diisi!']);
+		$this->form_validation->set_rules('kategori', 'Kategori', 'required', ['required' => 'Kategori Wajib diisi!']);
+		$this->form_validation->set_rules('harga', 'Harga', 'required|numeric', ['required' => 'Harga Wajib diisi!', 'numeric' => 'Harga Wajib diisi angka!']);
+		$this->form_validation->set_rules('stok', 'Stok', 'required', ['required' => 'Stok Wajib diisi!']);
+		$this->form_validation->set_rules('gambar', '', 'callback_photo_check');
+	}
+
+	private function barang_index()
+	{
+		// pagination 
+		$config['base_url'] = 'http://localhost/tokoapps/admin/data_barang/index';
+		$config['total_rows'] = $this->Model_barang->countAllBarang();
+		$config['per_page'] = 5;
+
+		// styling pagination
+		$config['full_tag_open'] = '<nav><ul class="pagination pagination-lg justify-content-center">';
+		$config['full_tag_close'] = '</ul></nav>';
+
+		$config['first_link'] = 'Awal';
+		$config['first_tag_open'] = '<li class="page-item">';
+		$config['first_tag_close'] = '</li>';
+
+		$config['last_link'] = 'Akhir';
+		$config['last_tag_open'] = '<li class="page-item">';
+		$config['last_tag_close'] = '</li>';
+
+		$config['next_link'] = '&raquo;';
+		$config['next_tag_open'] = '<li class="page-item">';
+		$config['next_tag_close'] = '</li>';
+
+		$config['prev_link'] = '&laquo;';
+		$config['prev_tag_open'] = '<li class="page-item">';
+		$config['prev_tag_close'] = '</li>';
+
+		$config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+		$config['cur_tag_close'] = '</a></li>';
+
+		$config['num_tag_open'] = '<li class="page-item">';
+		$config['num_tag_close'] = '</li>';
+
+		$config['attributes'] = array('class' => 'page-link');
+
+		// inisialisasi pagination
+		$this->pagination->initialize($config);
+
+
+		$data['start'] = $this->uri->segment(4);
+		$data['barang'] = $this->Model_barang->tampil_data_batas($config['per_page'], $data['start']);
+		$data['title'] = 'Data Barang';
+		$this->load->view('admin/data_barang', $data);
+	}
+
+	public function index()
+	{
+		$this->validasi_add();
 
 		if ($this->form_validation->run() == FALSE) {
-			// pagination 
-			$config['base_url'] = 'http://localhost/tokoapps/admin/data_barang/index';
-			$config['total_rows'] = $this->Model_barang->countAllBarang();
-			$config['per_page'] = 5;
-
-			// styling pagination
-			$config['full_tag_open'] = '<nav><ul class="pagination pagination-lg justify-content-center">';
-			$config['full_tag_close'] = '</ul></nav>';
-
-			$config['first_link'] = 'Awal';
-			$config['first_tag_open'] = '<li class="page-item">';
-			$config['first_tag_close'] = '</li>';
-
-			$config['last_link'] = 'Akhir';
-			$config['last_tag_open'] = '<li class="page-item">';
-			$config['last_tag_close'] = '</li>';
-
-			$config['next_link'] = '&raquo;';
-			$config['next_tag_open'] = '<li class="page-item">';
-			$config['next_tag_close'] = '</li>';
-
-			$config['prev_link'] = '&laquo;';
-			$config['prev_tag_open'] = '<li class="page-item">';
-			$config['prev_tag_close'] = '</li>';
-
-			$config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
-			$config['cur_tag_close'] = '</a></li>';
-
-			$config['num_tag_open'] = '<li class="page-item">';
-			$config['num_tag_close'] = '</li>';
-
-			$config['attributes'] = array('class' => 'page-link');
-
-			// inisialisasi pagination
-			$this->pagination->initialize($config);
-
-
-			$data['start'] = $this->uri->segment(4);
-			$data['barang'] = $this->Model_barang->tampil_data_batas($config['per_page'], $data['start']);
-			$data['title'] = 'Data Barang';
-			$this->load->view('admin/data_barang', $data);
+			$this->barang_index();
 		} else {
 			$nama_brg 	= $this->input->post('nama_brg');
 			$keterangan = $this->input->post('keterangan');
@@ -90,16 +110,12 @@ class Data_Barang extends CI_Controller
 
 	public function edit($id)
 	{
-		$this->form_validation->set_rules('nama_brg', 'Nama Barang', 'required', ['required' => 'Nama Barang Wajib diisi!']);
-		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required', ['required' => 'Keterangan Wajib diisi!']);
-		$this->form_validation->set_rules('kategori', 'Kategori', 'required', ['required' => 'Kategori Wajib diisi!']);
-		$this->form_validation->set_rules('harga', 'Harga', 'required|numeric', ['required' => 'Harga Wajib diisi!', 'numeric' => 'Harga Wajib diisi angka!']);
-		$this->form_validation->set_rules('stok', 'Stok', 'required', ['required' => 'Stok Wajib diisi!']);
-		$this->form_validation->set_rules('gambar', '', 'callback_photo_check');
+		$this->validasi_edit();
 
 		if ($this->form_validation->run() == FALSE) {
 			$where = ['id_brg' => $id];
 			$data['barang'] = $this->Model_barang->edit_barang($where, 'tb_barang')->result();
+			$data['kat_barang'] = ['Elektronik', 'Pakaian Pria', 'Pakaian Wanita', 'Pakaian Anak-anak', 'Peralatan Olahraga'];
 
 			$data['title'] = 'Edit Barang';
 			$this->load->view('admin/edit_barang', $data);

@@ -21,11 +21,9 @@
 				<label>Kategori</label>
 				<select class="form-control" name="kategori">
 					<option value="">--Pilih Kategori--</option>
-					<option>Elektronik</option>
-					<option>Pakaian Pria</option>
-					<option>Pakaian Wanita</option>
-					<option>Pakaian Anak-anak</option>
-					<option>Peralatan Olahraga</option>
+					<?php foreach ($kat_barang as $kt) : ?>
+						<option value="<?= $kt; ?>" <?= $brg->kategori == $kt ? "selected" : "" ?>><?= $kt; ?></option>
+					<?php endforeach; ?>
 				</select>
 				<?= form_error('kategori', '<div class="form-text text-danger">', '</div>'); ?>
 			</div>
