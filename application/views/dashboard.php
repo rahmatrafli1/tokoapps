@@ -40,7 +40,7 @@
 					<?= form_hidden('price', $brg->harga); ?>
 					<?= form_hidden('name', $brg->nama_brg); ?>
 					<?= form_hidden('redirect_page', str_replace('index.php/', '', current_url())); ?>
-					<img src="<?= base_url() . 'uploads/' . $brg->gambar; ?>" class="card-img-top" alt="<?= $brg->nama_brg; ?>" width="300">
+					<img src="<?= base_url() . 'uploads/' . $brg->gambar; ?>" class="card-img-top" alt="<?= $brg->nama_brg; ?>" width="300" height="250">
 					<div class="card-body">
 						<h5 class="card-title mb-1"><?= $brg->nama_brg; ?></h5>
 						<small><?= $brg->keterangan ?></small><br />

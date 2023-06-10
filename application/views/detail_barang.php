@@ -13,7 +13,7 @@
 			<?= form_hidden('redirect_page', str_replace('index.php/', '', base_url('/'))); ?>
 			<div class="row">
 				<div class="col-md-4">
-					<img src="<?= base_url('uploads/' . $barang->gambar); ?>" alt="<?= $barang->nama_brg; ?>" class="card-img-top">
+					<img src="<?= base_url('uploads/' . $barang->gambar); ?>" alt="<?= $barang->nama_brg; ?>" class="card-img-top" width="300" height="300">
 				</div>
 				<div class="col-md-8">
 					<table class="table table-bordered">
