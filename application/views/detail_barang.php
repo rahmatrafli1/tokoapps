@@ -45,10 +45,12 @@
 						</tr>
 					</table>
 					<div class="form-inline">
-						<div class="form-group">
-							<input type="number" name="qty" min="0" placeholder="qty" class="form-control mr-1">
-						</div>
-						<button type="submit" class="btn btn-sm btn-primary swalDefaultSuccess mr-1"><i class="fas fa-cart-plus"></i> Tambah</button>
+						<?php if ($barang->stok != 0) : ?>
+							<div class="form-group">
+								<input type="number" name="qty" min="0" placeholder="qty" class="form-control mr-1">
+							</div>
+							<button type="submit" class="btn btn-sm btn-primary swalDefaultSuccess mr-1"><i class="fas fa-cart-plus"></i> Tambah</button>
+						<?php endif; ?>
 						<a href="<?= base_url('/'); ?>" class="btn btn-sm btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a>
 					</div>
 				</div>

@@ -27,7 +27,9 @@ class Model_invoice extends CI_Model
 				'id_brg' => $ker['id'],
 				'nama_brg' => $ker['name'],
 				'jumlah' => $ker['qty'],
-				'harga' => $ker['price']
+				'harga' => $ker['price'],
+				'jasa' => $this->input->post('jasa'),
+				'pembayaran' => $this->input->post('pembayaran')
 			];
 			$this->db->insert('tb_pesanan', $data);
 		}

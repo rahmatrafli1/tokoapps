@@ -38,12 +38,6 @@ class Dashboard extends CI_Controller
 
 	public function pembayaran()
 	{
-		$data['title'] = 'Pembayaran';
-		$this->load->view('pembayaran', $data);
-	}
-
-	public function proses_pesanan()
-	{
 		$this->form_validation->set_rules('nama', 'Nama', 'required', ['required' => 'Nama Lengkap anda Wajib diisi!']);
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required', ['required' => 'Alamat Lengkap anda Wajib diisi!']);
 		$this->form_validation->set_rules('no_telp', 'Nomor Telepon', 'required|numeric', ['required' => 'Nomor Telepon anda Wajib diisi!', 'numeric' => 'Nomor Telepon anda harus berupa angka!']);

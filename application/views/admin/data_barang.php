@@ -15,25 +15,31 @@
 			<th>STOK</th>
 			<th colspan="3">AKSI</th>
 		</tr>
-		<?php foreach ($barang as $brg) : ?>
+		<?php if (empty($barang)) : ?>
 			<tr>
-				<td><?= ++$start; ?></td>
-				<td><?= $brg->nama_brg; ?></td>
-				<td><?= $brg->keterangan; ?></td>
-				<td><?= $brg->kategori; ?></td>
-				<td><?= "Rp. " . number_format($brg->harga, 0, ",", ".") ?></td>
-				<td><?= $brg->stok; ?></td>
-				<td>
-					<?= anchor('admin/data_barang/detail/' . $brg->id_brg, '<div class="btn btn-success btn-sm"><i class="fas fa-eye"></i></div>'); ?>
-				</td>
-				<td>
-					<?= anchor('admin/data_barang/edit/' . $brg->id_brg, '<div class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i></div>'); ?>
-				</td>
-				<td>
-					<a href="<?= base_url('admin/data_barang/hapus/' . $brg->id_brg) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fas fa-trash"></i></a>
-				</td>
+				<td colspan="7" class="text-center">DATA BARANG KOSONG</td>
 			</tr>
-		<?php endforeach; ?>
+		<?php else : ?>
+			<?php foreach ($barang as $brg) : ?>
+				<tr>
+					<td><?= ++$start; ?></td>
+					<td><?= $brg->nama_brg; ?></td>
+					<td><?= $brg->keterangan; ?></td>
+					<td><?= $brg->kategori; ?></td>
+					<td><?= "Rp. " . number_format($brg->harga, 0, ",", ".") ?></td>
+					<td><?= $brg->stok; ?></td>
+					<td>
+						<?= anchor('admin/data_barang/detail/' . $brg->id_brg, '<div class="btn btn-success btn-sm"><i class="fas fa-eye"></i></div>'); ?>
+					</td>
+					<td>
+						<?= anchor('admin/data_barang/edit/' . $brg->id_brg, '<div class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i></div>'); ?>
+					</td>
+					<td>
+						<a href="<?= base_url('admin/data_barang/hapus/' . $brg->id_brg) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fas fa-trash"></i></a>
+					</td>
+				</tr>
+			<?php endforeach; ?>
+		<?php endif; ?>
 	</table>
 	<?= $this->pagination->create_links(); ?>
 </div>

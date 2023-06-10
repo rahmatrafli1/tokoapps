@@ -19,7 +19,7 @@
 			</div>
 			<br><br>
 			<h3>Input Alamat Pengiriman dan Pembayaran</h3>
-			<form action="<?= base_url('dashboard/proses_pesanan'); ?>" method="post">
+			<form action="<?= current_url(); ?>" method="post">
 				<div class="form-group">
 					<label>Nama Lengkap</label>
 					<input type="text" name="nama" placeholder="Nama Lengkap Anda" class="form-control" value="<?= set_value('nama'); ?>">
@@ -39,11 +39,11 @@
 					<label>Jasa Pengiriman</label>
 					<select name="jasa" class="form-control">
 						<option value="">--Pilih Jasa Pengiriman--</option>
-						<option>JNE</option>
-						<option>TIKI</option>
-						<option>POS Indonesia</option>
-						<option>Gojek</option>
-						<option>Grab</option>
+						<option value="JNE" <?= set_value("jasa") == "JNE" ? "selected" : "" ?>>JNE</option>
+						<option value="TIKI" <?= set_value("jasa") == "TIKI" ? "selected" : "" ?>>TIKI</option>
+						<option value="POS Indonesia" <?= set_value("jasa") == "POS Indonesia" ? "selected" : "" ?>>POS Indonesia</option>
+						<option value="Gojek" <?= set_value("jasa") == "Gojek" ? "selected" : "" ?>>Gojek</option>
+						<option value="Grab" <?= set_value("jasa") == "Grab" ? "selected" : "" ?>>Grab</option>
 					</select>
 					<?= form_error('jasa', '<div class="form-text text-danger">', '</div>'); ?>
 				</div>
@@ -51,13 +51,13 @@
 					<label>Pilih Metode Pembayaran</label>
 					<select name="pembayaran" class="form-control">
 						<option value="">--Pilih Metode Pembayaran--</option>
-						<option>BCA</option>
-						<option>BNI</option>
-						<option>BRI</option>
-						<option>Permata Bank</option>
-						<option>Bank Mega</option>
-						<option>Mandiri</option>
-						<option>Bayar di Tempat</option>
+						<option value="BCA" <?= set_value("pembayaran") == "BCA" ? "selected" : "" ?>>BCA</option>
+						<option value="BNI" <?= set_value("pembayaran") == "BNI" ? "selected" : "" ?>>BNI</option>
+						<option value="BRI" <?= set_value("pembayaran") == "BRI" ? "selected" : "" ?>>BRI</option>
+						<option value="Permata Bank" <?= set_value("pembayaran") == "Permata Bank" ? "selected" : "" ?>>Permata Bank</option>
+						<option value="Bank Mega" <?= set_value("pembayaran") == "Bank Mega" ? "selected" : "" ?>>Bank Mega</option>
+						<option value="Mandiri" <?= set_value("pembayaran") == "Mandiri" ? "selected" : "" ?>>Mandiri</option>
+						<option value="Bayar di Tempat" <?= set_value("pembayaran") == "Bayar di Tempat" ? "selected" : "" ?>>Bayar di Tempat</option>
 					</select>
 					<?= form_error('pembayaran', '<div class="form-text text-danger">', '</div>'); ?>
 				</div>
