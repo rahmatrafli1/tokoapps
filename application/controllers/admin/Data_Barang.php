@@ -5,21 +5,21 @@ class Data_Barang extends CI_Controller
 {
 	private function validasi_add()
 	{
-		$this->form_validation->set_rules('nama_brg', 'Nama Barang', 'required', ['required' => 'Nama Barang Wajib diisi!']);
-		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required', ['required' => 'Keterangan Wajib diisi!']);
+		$this->form_validation->set_rules('nama_brg', 'Nama Barang', 'required|max_length[120]', ['required' => 'Nama Barang Wajib diisi!', 'max_length' => 'Maksimum 120 karakter!']);
+		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required|max_length[225]', ['required' => 'Keterangan Wajib diisi!', 'max_length' => 'Maksimum 225 karakter!']);
 		$this->form_validation->set_rules('kategori', 'Kategori', 'required', ['required' => 'Kategori Wajib diisi!']);
-		$this->form_validation->set_rules('harga', 'Harga', 'required|numeric', ['required' => 'Harga Wajib diisi!', 'numeric' => 'Harga Wajib diisi angka!']);
-		$this->form_validation->set_rules('stok', 'Stok', 'required', ['required' => 'Stok Wajib diisi!']);
+		$this->form_validation->set_rules('harga', 'Harga', 'required|numeric|max_length[11]', ['required' => 'Harga Wajib diisi!', 'numeric' => 'Harga Wajib diisi angka!', 'max_length' => 'Maksimum 11 karakter!']);
+		$this->form_validation->set_rules('stok', 'Stok', 'required|max_length[4]', ['required' => 'Stok Wajib diisi!', 'max_length' => 'Maksimum 4 karakter!']);
 		$this->form_validation->set_rules('gambar', '', 'callback_file_check');
 	}
 
 	private function validasi_edit()
 	{
-		$this->form_validation->set_rules('nama_brg', 'Nama Barang', 'required', ['required' => 'Nama Barang Wajib diisi!']);
-		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required', ['required' => 'Keterangan Wajib diisi!']);
+		$this->form_validation->set_rules('nama_brg', 'Nama Barang', 'required|max_length[120]', ['required' => 'Nama Barang Wajib diisi!', 'max_length' => 'Maksimum 120 karakter!']);
+		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required|max_length[225]', ['required' => 'Keterangan Wajib diisi!', 'max_length' => 'Maksimum 225 karakter!']);
 		$this->form_validation->set_rules('kategori', 'Kategori', 'required', ['required' => 'Kategori Wajib diisi!']);
-		$this->form_validation->set_rules('harga', 'Harga', 'required|numeric', ['required' => 'Harga Wajib diisi!', 'numeric' => 'Harga Wajib diisi angka!']);
-		$this->form_validation->set_rules('stok', 'Stok', 'required', ['required' => 'Stok Wajib diisi!']);
+		$this->form_validation->set_rules('harga', 'Harga', 'required|numeric|max_length[11]', ['required' => 'Harga Wajib diisi!', 'numeric' => 'Harga Wajib diisi angka!', 'max_length' => 'Maksimum 11 karakter!']);
+		$this->form_validation->set_rules('stok', 'Stok', 'required|max_length[4]', ['required' => 'Stok Wajib diisi!', 'max_length' => 'Maksimum 4 karakter!']);
 		$this->form_validation->set_rules('gambar', '', 'callback_photo_check');
 	}
 

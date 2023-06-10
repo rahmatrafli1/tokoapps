@@ -40,7 +40,7 @@ class Dashboard extends CI_Controller
 	{
 		$this->form_validation->set_rules('nama', 'Nama', 'required', ['required' => 'Nama Lengkap anda Wajib diisi!']);
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required', ['required' => 'Alamat Lengkap anda Wajib diisi!']);
-		$this->form_validation->set_rules('no_telp', 'Nomor Telepon', 'required|numeric', ['required' => 'Nomor Telepon anda Wajib diisi!', 'numeric' => 'Nomor Telepon anda harus berupa angka!']);
+		$this->form_validation->set_rules('no_telp', 'Nomor Telepon', 'required|numeric|max_length[13]', ['required' => 'Nomor Telepon anda Wajib diisi!', 'numeric' => 'Nomor Telepon anda harus berupa angka!', 'max_length' => 'Maksimum 13 Karakter!']);
 		$this->form_validation->set_rules('jasa', 'Jasa', 'required', ['required' => 'Jasa Pengiriman Wajib diisi!']);
 		$this->form_validation->set_rules('pembayaran', 'Pembayaran', 'required', ['required' => 'Metode Pembayaran Wajib diisi!']);
 
