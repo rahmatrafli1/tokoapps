@@ -22,7 +22,11 @@
 				<select class="form-control" name="kategori">
 					<option value="">--Pilih Kategori--</option>
 					<?php foreach ($kat_barang as $kt) : ?>
-						<option value="<?= $kt; ?>" <?= $brg->kategori == $kt ? "selected" : "" ?>><?= $kt; ?></option>
+						<?php if ($kt == $brg->kategori) : ?>
+							<option value="<?= $kt; ?>" <?= "selected" ?>><?= $kt; ?></option>
+						<?php else : ?>
+							<option value="<?= $kt; ?>" <?= set_value("kategori") == $kt ? "selected" : "" ?>><?= $kt; ?></option>
+						<?php endif; ?>
 					<?php endforeach; ?>
 				</select>
 				<?= form_error('kategori', '<div class="form-text text-danger">', '</div>'); ?>
