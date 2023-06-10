@@ -191,6 +191,10 @@ class Data_Barang extends CI_Controller
 
 		$mime = get_mime_by_extension($_FILES['gambar']['name']);
 		if (isset($_FILES['gambar']['name']) && $_FILES['gambar']['name'] != null) {
+			if (filesize($_FILES['gambar']['tmp_name']) > 200000) {
+				$this->form_validation->set_message('file_check', 'Gambar ini tidak boleh lebih dari 2MB!');
+				return false;
+			}
 			if (!in_array($mime, $allowed_mime_type_arr)) {
 				$this->form_validation->set_message('file_check', 'File ini hanya berformat gif/jpg/jpeg/png!');
 				return false;
@@ -209,6 +213,10 @@ class Data_Barang extends CI_Controller
 
 		$mime = get_mime_by_extension($_FILES['gambar']['name']);
 		if (isset($_FILES['gambar']['name']) && $_FILES['gambar']['name'] != null) {
+			if (filesize($_FILES['gambar']['tmp_name']) > 200000) {
+				$this->form_validation->set_message('photo_check', 'Gambar ini tidak boleh lebih dari 2MB!');
+				return false;
+			}
 			if (!in_array($mime, $allowed_mime_type_arr)) {
 				$this->form_validation->set_message('photo_check', 'Gambar ini hanya berformat gif/jpg/jpeg/png!');
 				return false;
