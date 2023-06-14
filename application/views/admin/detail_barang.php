@@ -19,7 +19,7 @@
 			<p class="card-text">Kategori: <?= $detail->kategori; ?></p>
 			<p class="card-text">Stok: <?= $detail->stok; ?> barang</p>
 			<p class="card-text"><?= $detail->keterangan; ?></p>
-			<a href="<?= base_url('admin/data_barang') ?>" class="btn btn-primary">Kembali</a>
+			<a href="<?= base_url('admin/Data_Barang') ?>" class="btn btn-primary">Kembali</a>
 		</div>
 	</div>
 </div>

@@ -26,7 +26,7 @@ class Data_Barang extends CI_Controller
 	private function barang_index()
 	{
 		// pagination 
-		$config['base_url'] = 'http://localhost/tokoapps/admin/data_barang/index';
+		$config['base_url'] = 'https://tokoapps.crowndfunding-rahmat-rafli.com/admin/Data_Barang/index';
 		$config['total_rows'] = $this->Model_barang->countAllBarang();
 		$config['per_page'] = 5;
 
@@ -104,7 +104,7 @@ class Data_Barang extends CI_Controller
 
 			$this->Model_barang->tambah_barang($data, 'tb_barang');
 			$this->session->set_flashdata('success', 'ditambah!');
-			redirect('admin/data_barang');
+			redirect('admin/Data_Barang');
 		}
 	}
 
@@ -161,7 +161,7 @@ class Data_Barang extends CI_Controller
 
 			$this->Model_barang->update_data($where, $data, 'tb_barang');
 			$this->session->set_flashdata('success', 'diubah!');
-			redirect('admin/data_barang');
+			redirect('admin/Data_Barang');
 		}
 	}
 
@@ -174,7 +174,7 @@ class Data_Barang extends CI_Controller
 		$where = ['id_brg' => $id];
 		$this->Model_barang->hapus_data($where, 'tb_barang');
 		$this->session->set_flashdata('success', 'dihapus!');
-		redirect('admin/data_barang');
+		redirect('admin/Data_Barang');
 	}
 
 	public function detail($id)

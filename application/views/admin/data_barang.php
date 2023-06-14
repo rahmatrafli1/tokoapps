@@ -29,13 +29,13 @@
 					<td><?= "Rp. " . number_format($brg->harga, 0, ",", ".") ?></td>
 					<td><?= $brg->stok; ?></td>
 					<td>
-						<?= anchor('admin/data_barang/detail/' . $brg->id_brg, '<div class="btn btn-success btn-sm"><i class="fas fa-eye"></i></div>'); ?>
+						<?= anchor('admin/Data_Barang/detail/' . $brg->id_brg, '<div class="btn btn-success btn-sm"><i class="fas fa-eye"></i></div>'); ?>
 					</td>
 					<td>
-						<?= anchor('admin/data_barang/edit/' . $brg->id_brg, '<div class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i></div>'); ?>
+						<?= anchor('admin/Data_Barang/edit/' . $brg->id_brg, '<div class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i></div>'); ?>
 					</td>
 					<td>
-						<a href="<?= base_url('admin/data_barang/hapus/' . $brg->id_brg) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fas fa-trash"></i></a>
+						<a href="<?= base_url('admin/Data_Barang/hapus/' . $brg->id_brg) ?>" class="btn btn-danger btn-sm tombol-hapus"><i class="fas fa-trash"></i></a>
 					</td>
 				</tr>
 			<?php endforeach; ?>
@@ -55,7 +55,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form action="<?= current_url(); ?>" method="post" enctype="multipart/form-data">
+				<form action="<?= base_url('admin/Data_Barang'); ?>" method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<label>Nama Barang</label>
 						<input type="text" name="nama_brg" class="form-control" value="<?= set_value('nama_brg'); ?>">

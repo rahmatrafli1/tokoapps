@@ -33,6 +33,6 @@
 		</tr>
 	</table>
 
-	<a href="<?= base_url('admin/invoice') ?>" class="btn btn-secondary mb-3"><i class="fas fa-arrow-left"></i> Kembali</a>
+	<a href="<?= base_url('admin/Invoice') ?>" class="btn btn-secondary mb-3"><i class="fas fa-arrow-left"></i> Kembali</a>
 </div>
 <?php include_once('templates_admin/footer.php'); ?>

@@ -24,7 +24,7 @@
 					<td><?= $inv->tgl_pesan; ?></td>
 					<td><?= $inv->batas_bayar; ?></td>
 					<td>
-						<?= anchor('admin/invoice/detail/' . $inv->id, '<div class="btn btn-sm btn-success"><i class="fas fa-eye"></i></div>'); ?>
+						<?= anchor('admin/Invoice/detail/' . $inv->id, '<div class="btn btn-sm btn-success"><i class="fas fa-eye"></i></div>'); ?>
 					</td>
 				</tr>
 			<?php endforeach; ?>

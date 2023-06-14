@@ -19,20 +19,20 @@
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item <?php if ($title == 'Dashboard Admin') : ?>active<?php endif; ?>">
-				<a class="nav-link" href="<?= base_url(); ?>admin/dashboard_admin">
+				<a class="nav-link" href="<?= base_url(); ?>admin/Dashboard_Admin">
 					<i class="fas fa-fw fa-tachometer-alt"></i>
 					<span>Dashboard</span></a>
 			</li>
 
 			<!-- Nav Item - Tables -->
 			<li class="nav-item <?php if ($title == 'Data Barang' || $title == 'Edit Barang' || $title == 'Detail Data Barang') : ?>active<?php endif; ?>">
-				<a class="nav-link" href="<?= base_url(); ?>admin/data_barang">
+				<a class="nav-link" href="<?= base_url(); ?>admin/Data_Barang">
 					<i class="fas fa-fw fa-database"></i>
 					<span>Data Barang</span></a>
 			</li>
 
 			<li class="nav-item <?php if ($title == 'Invoice' || $title == 'Detail Invoice') : ?>active<?php endif; ?>">
-				<a class="nav-link" href="<?= base_url(); ?>admin/invoice">
+				<a class="nav-link" href="<?= base_url(); ?>admin/Invoice">
 					<i class="fas fa-fw fa-file-invoice"></i>
 					<span>Invoices</span></a>
 			</li>
