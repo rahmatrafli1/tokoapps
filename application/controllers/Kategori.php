@@ -3,6 +3,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Kategori extends CI_Controller
 {
+	public function __construct()
+	{
+		parent::__construct();
+		if ($this->session->userdata('role_id') == 1) {
+			redirect('admin/Dashboard_Admin');
+		}
+	}
+
 	public function elektronik()
 	{
 		$data['elektronik'] = $this->Model_kategori->data_elektronik()->result();

@@ -3,11 +3,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Dashboard extends CI_Controller
 {
-	public function index()
+	public function __construct()
 	{
-		$data['barang'] = $this->Model_barang->tampil_data()->result();
-		$data['title'] = "Dashboard";
-		$this->load->view('dashboard', $data);
+		parent::__construct();
+		if ($this->session->userdata('role_id') != 2) {
+			$this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Anda harus masuk terlebih dahulu!</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>');
+			redirect('auth/login');
+		}
 	}
 
 	public function tambah_keranjang()
