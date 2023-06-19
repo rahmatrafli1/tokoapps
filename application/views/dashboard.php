@@ -52,8 +52,10 @@
 							<?php endif; ?>
 						</span>
 						<div>
-							<?php if ($brg->stok != 0) : ?>
-								<button type="submit" class="btn btn-sm btn-primary swalDefaultSuccess"><i class="fas fa-cart-plus"></i> Tambah</button>
+							<?php if ($this->session->userdata('username')) : ?>
+								<?php if ($brg->stok != 0) : ?>
+									<button type="submit" class="btn btn-sm btn-primary swalDefaultSuccess"><i class="fas fa-cart-plus"></i> Tambah</button>
+								<?php endif; ?>
 							<?php endif; ?>
 							<a href="<?= base_url('dashboard/detail/' . $brg->id_brg); ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i> Detail</a>
 						</div>
