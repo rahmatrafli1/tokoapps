@@ -77,6 +77,7 @@ class Data_Barang extends CI_Controller
 
 
 		$data['start'] = $this->uri->segment(4);
+		$data['user'] = $this->db->get_where('tb_user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['barang'] = $this->Model_barang->tampil_data_batas($config['per_page'], $data['start']);
 		$data['title'] = 'Data Barang';
 		$this->load->view('admin/data_barang', $data);
@@ -131,6 +132,7 @@ class Data_Barang extends CI_Controller
 			$data['barang'] = $this->Model_barang->edit_barang($where, 'tb_barang')->result();
 			$data['kat_barang'] = ['Elektronik', 'Pakaian Pria', 'Pakaian Wanita', 'Pakaian Anak-anak', 'Peralatan Olahraga'];
 
+			$data['user'] = $this->db->get_where('tb_user', ['username' => $this->session->userdata('username')])->row_array();
 			$data['title'] = 'Edit Barang';
 			$this->load->view('admin/edit_barang', $data);
 		} else {
@@ -193,6 +195,7 @@ class Data_Barang extends CI_Controller
 
 	public function detail($id)
 	{
+		$data['user'] = $this->db->get_where('tb_user', ['username' => $this->session->userdata('username')])->row_array();
 		$detail = $this->Model_barang->get_detail($id);
 		$data['title'] = 'Detail Data Barang';
 		$data['detail'] = $detail;

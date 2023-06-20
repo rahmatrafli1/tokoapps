@@ -30,6 +30,7 @@ class Welcome extends CI_Controller
 
 	public function index()
 	{
+		$data['user'] = $this->db->get_where('tb_user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['barang'] = $this->Model_barang->tampil_data()->result();
 		$data['title'] = "Dashboard";
 		$this->load->view('dashboard', $data);

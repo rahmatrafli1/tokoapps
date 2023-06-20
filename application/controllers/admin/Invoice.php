@@ -19,6 +19,7 @@ class Invoice extends CI_Controller
 
 	public function index()
 	{
+		$data['user'] = $this->db->get_where('tb_user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['invoice'] = $this->Model_invoice->tampil_data();
 		$data['title'] = "Invoice";
 		$this->load->view('admin/invoice', $data);
@@ -26,6 +27,7 @@ class Invoice extends CI_Controller
 
 	public function detail($id_invoice)
 	{
+		$data['user'] = $this->db->get_where('tb_user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['invoice'] = $this->Model_invoice->ambil_id_invoice($id_invoice);
 		$data['pesanan'] = $this->Model_invoice->ambil_id_pesanan($id_invoice);
 		$data['title'] = "Detail Invoice";

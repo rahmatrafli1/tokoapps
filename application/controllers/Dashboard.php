@@ -33,6 +33,7 @@ class Dashboard extends CI_Controller
 
 	public function lihat_keranjang()
 	{
+		$data['user'] = $this->db->get_where('tb_user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['title'] = 'Lihat Keranjang';
 		$this->load->view('lihat_keranjang', $data);
 	}
@@ -45,6 +46,7 @@ class Dashboard extends CI_Controller
 
 	public function pembayaran()
 	{
+		$data['user'] = $this->db->get_where('tb_user', ['username' => $this->session->userdata('username')])->row_array();
 		$this->form_validation->set_rules('nama', 'Nama', 'required', ['required' => 'Nama Lengkap anda Wajib diisi!']);
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required', ['required' => 'Alamat Lengkap anda Wajib diisi!']);
 		$this->form_validation->set_rules('no_telp', 'Nomor Telepon', 'required|numeric|max_length[13]', ['required' => 'Nomor Telepon anda Wajib diisi!', 'numeric' => 'Nomor Telepon anda harus berupa angka!', 'max_length' => 'Maksimum 13 Karakter!']);
@@ -68,6 +70,7 @@ class Dashboard extends CI_Controller
 
 	public function detail($id_brg)
 	{
+		$data['user'] = $this->db->get_where('tb_user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['barang'] = $this->Model_barang->get_detail($id_brg);
 		$data['title'] = 'Detail Barang';
 		return $this->load->view('detail_barang', $data);
