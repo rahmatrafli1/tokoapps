@@ -71,6 +71,7 @@ class Auth extends CI_Controller
                 'nama' => $this->input->post('nama'),
                 'username' => $this->input->post('username'),
                 'password' => $this->input->post('password1'),
+                'gambar' => 'undraw_profile.svg',
                 'role_id' => 2
             ];
 

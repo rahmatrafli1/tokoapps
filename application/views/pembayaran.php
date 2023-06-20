@@ -22,7 +22,7 @@
 			<form action="<?= current_url(); ?>" method="post">
 				<div class="form-group">
 					<label>Nama Lengkap</label>
-					<input type="text" name="nama" placeholder="Nama Lengkap Anda" class="form-control" value="<?= set_value('nama'); ?>">
+					<input type="text" name="nama" placeholder="Nama Lengkap Anda" class="form-control" value="<?= $user['nama']; ?>" readonly>
 					<?= form_error('nama', '<div class="form-text text-danger">', '</div>'); ?>
 				</div>
 				<div class="form-group">
