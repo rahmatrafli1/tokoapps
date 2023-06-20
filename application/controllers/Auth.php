@@ -47,12 +47,6 @@ class Auth extends CI_Controller
     public function logout()
     {
         $this->session->sess_destroy();
-        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Berhasil keluar akun</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>');
         redirect('auth/login');
     }
 
@@ -72,6 +66,7 @@ class Auth extends CI_Controller
                 'username' => $this->input->post('username'),
                 'password' => $this->input->post('password1'),
                 'gambar' => 'undraw_profile.svg',
+                'tgl_dibuat' => date('Y-m-d'),
                 'role_id' => 2
             ];
 
