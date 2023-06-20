@@ -10,6 +10,11 @@ class Auth extends CI_Controller
 
     public function login()
     {
+        if ($this->session->userdata('username') && $this->session->userdata('role_id') == 2) {
+		    redirect('/');
+		} else if($this->session->userdata('username') && $this->session->userdata('role_id') == 1) {
+		    redirect('admin/Dashboard_Admin');
+		}
         $this->form_validation->set_rules('username', 'Username', 'required', ['required' => 'Username anda Wajib diisi!']);
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]', ['required' => 'Password anda Wajib diisi!', 'min_length' => 'Password anda terlalu pendek!']);
         if ($this->form_validation->run() == FALSE) {
@@ -52,6 +57,11 @@ class Auth extends CI_Controller
 
     public function register()
     {
+        if ($this->session->userdata('username') && $this->session->userdata('role_id') == 2) {
+		    redirect('/');
+		} else if($this->session->userdata('username') && $this->session->userdata('role_id') == 1) {
+		    redirect('admin/Dashboard_Admin');
+		}
         $this->form_validation->set_rules('nama', 'Nama', 'required', ['required' => 'Nama anda Wajib diisi!']);
         $this->form_validation->set_rules('username', 'Username', 'required', ['required' => 'Username anda Wajib diisi!']);
         $this->form_validation->set_rules('password1', 'Password1', 'required|min_length[5]|matches[password2]', ['required' => 'Password anda Wajib diisi!', 'min_length' => 'Password anda terlalu pendek!', 'matches' => 'Password anda tidak cocok!']);
